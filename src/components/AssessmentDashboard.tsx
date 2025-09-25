@@ -5,12 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import { AssessmentCard } from "./AssessmentCard";
 import { QuestionSection } from "./QuestionSection";
 import { ProgressDashboard } from "./ProgressDashboard";
+import { ComplianceReportGenerator } from "./ComplianceReportGenerator";
 import { Section, assessmentSections } from "@/data/assessmentData";
 import { exportToExcel, exportToPDF, exportDashboardToPDF } from "@/utils/exportUtils";
-import { Shield, Download, FileSpreadsheet, FileText, BarChart3, RotateCcw } from "lucide-react";
+import { Shield, Download, FileSpreadsheet, FileText, BarChart3, RotateCcw, FileCheck } from "lucide-react";
 import { toast } from "sonner";
 
-type View = 'overview' | 'section' | 'dashboard';
+type View = 'overview' | 'section' | 'dashboard' | 'compliance';
 
 export function AssessmentDashboard() {
   const [sections, setSections] = useState<Section[]>(assessmentSections);
@@ -120,47 +121,36 @@ export function AssessmentDashboard() {
     );
   }
 
-  if (currentView === 'dashboard') {
-    return (
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <div className="bg-gradient-security text-white p-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex items-center justify-between mb-4">
-              <Button
-                variant="ghost"
-                onClick={() => setCurrentView('overview')}
-                className="text-white hover:bg-white/20"
-              >
-                <Shield className="h-4 w-4 mr-2" />
-                Επιστροφή στις Ενότητες
-              </Button>
-              
-              <div className="flex gap-2">
+    if (currentView === 'compliance') {
+      return (
+        <div className="min-h-screen bg-background">
+          {/* Header */}
+          <div className="bg-gradient-security text-white p-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="flex items-center justify-between mb-4">
                 <Button
                   variant="ghost"
-                  onClick={handleExportDashboardPDF}
+                  onClick={() => setCurrentView('overview')}
                   className="text-white hover:bg-white/20"
                 >
-                  <FileText className="h-4 w-4 mr-2" />
-                  Εξαγωγή Dashboard PDF
+                  <Shield className="h-4 w-4 mr-2" />
+                  Επιστροφή στις Ενότητες
                 </Button>
               </div>
+              
+              <h1 className="text-3xl font-bold">Αναφορές Συμμόρφωσης</h1>
+              <p className="text-white/90">
+                Παραγωγή επίσημων αναφορών συμμόρφωσης με τον Ν. 5160/2024
+              </p>
             </div>
-            
-            <h1 className="text-3xl font-bold">Dashboard Αποτελεσμάτων</h1>
-            <p className="text-white/90">
-              Επισκόπηση της προόδου και των αποτελεσμάτων της αξιολόγησης
-            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto p-6">
+            <ComplianceReportGenerator sections={sections} />
           </div>
         </div>
-
-        <div className="max-w-6xl mx-auto p-6" id="dashboard-content">
-          <ProgressDashboard sections={sections} />
-        </div>
-      </div>
-    );
-  }
+      );
+    }
 
   return (
     <div className="min-h-screen bg-background">
@@ -212,6 +202,13 @@ export function AssessmentDashboard() {
               >
                 <BarChart3 className="h-4 w-4 mr-2" />
                 Dashboard Αποτελεσμάτων
+              </Button>
+              <Button
+                onClick={() => setCurrentView('compliance')}
+                className="bg-secondary hover:bg-secondary-hover"
+              >
+                <FileCheck className="h-4 w-4 mr-2" />
+                Αναφορές Συμμόρφωσης
               </Button>
             </div>
             
