@@ -1,6 +1,6 @@
 import { Document, Packer, Paragraph, HeadingLevel, TextRun, Table, TableRow, TableCell, WidthType, AlignmentType, BorderStyle } from 'docx';
 import jsPDF from 'jspdf';
-import { Section, calculateSectionScore, getRiskLevel } from '@/data/assessmentData';
+import { Section, calculateSectionScore, getRiskLevel } from '@/data/fullAssessmentData';
 import { nis2Requirements, calculateComplianceStatus, complianceStatusLabels, NIS2Requirement, ComplianceStatus } from '@/data/nis2Requirements';
 
 export interface ComplianceReportData {

@@ -6,7 +6,7 @@ import { AssessmentCard } from "./AssessmentCard";
 import { QuestionSection } from "./QuestionSection";
 import { ProgressDashboard } from "./ProgressDashboard";
 import { ComplianceReportGenerator } from "./ComplianceReportGenerator";
-import { Section, assessmentSections } from "@/data/assessmentData";
+import { Section, assessmentSections } from "@/data/fullAssessmentData";
 import { exportToExcel, exportToPDF, exportDashboardToPDF } from "@/utils/exportUtils";
 import { Shield, Download, FileSpreadsheet, FileText, BarChart3, RotateCcw, FileCheck } from "lucide-react";
 import { toast } from "sonner";

@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, CheckCircle2, AlertTriangle, XCircle } from "lucide-react";
-import { Section, calculateSectionScore, getRiskLevel } from "@/data/assessmentData";
+import { Section, calculateSectionScore, getRiskLevel } from "@/data/fullAssessmentData";
 
 interface AssessmentCardProps {
   section: Section;

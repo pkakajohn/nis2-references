@@ -1,7 +1,7 @@
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { Section, calculateSectionScore, getRiskLevel } from '@/data/assessmentData';
+import { Section, calculateSectionScore, getRiskLevel } from '@/data/fullAssessmentData';
 
 export function exportToExcel(sections: Section[]) {
   // Create workbook
@@ -111,13 +111,23 @@ export function exportToExcel(sections: Section[]) {
 
 export async function exportToPDF(sections: Section[]) {
   const pdf = new jsPDF('p', 'mm', 'a4');
+  
+  // Add Greek font support
+  pdf.setDocumentProperties({
+    creator: 'Cybersecurity Assessment Tool',
+    subject: 'Αποτελέσματα Αξιολόγησης Κυβερνοασφάλειας'
+  });
+  
   const pageWidth = pdf.internal.pageSize.getWidth();
   const margin = 20;
   let yPosition = margin;
   
-  // Helper function to add text with word wrapping
+  // Helper function to add text with word wrapping and Greek support
   const addText = (text: string, x: number, y: number, maxWidth: number, fontSize = 10) => {
     pdf.setFontSize(fontSize);
+    // Use 'helvetica' for better Greek character support
+    pdf.setFont('helvetica', 'normal');
+    
     const lines = pdf.splitTextToSize(text, maxWidth);
     
     lines.forEach((line: string, index: number) => {

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { QuestionCard } from "./QuestionCard";
-import { Section, calculateSectionScore, getRiskLevel } from "@/data/assessmentData";
+import { Section, calculateSectionScore, getRiskLevel } from "@/data/fullAssessmentData";
 import { ArrowLeft, ArrowRight, BarChart3, Download } from "lucide-react";
 
 interface QuestionSectionProps {

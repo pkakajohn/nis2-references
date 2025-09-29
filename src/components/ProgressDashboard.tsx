@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Section, calculateSectionScore, getRiskLevel } from "@/data/assessmentData";
+import { Section, calculateSectionScore, getRiskLevel } from "@/data/fullAssessmentData";
 import { Shield, TrendingUp, AlertTriangle, CheckCircle2 } from "lucide-react";
 
 interface ProgressDashboardProps {

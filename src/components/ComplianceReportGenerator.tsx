@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Section } from "@/data/assessmentData";
+import { Section } from "@/data/fullAssessmentData";
 import { nis2Requirements, calculateComplianceStatus, complianceStatusLabels, complianceStatusColors } from "@/data/nis2Requirements";
 import { generateComplianceReportDOC, generateComplianceReportPDF, ComplianceReportData } from "@/utils/complianceReportUtils";
 import { FileText, Download, Shield, AlertTriangle, CheckCircle2, XCircle, AlertCircle } from "lucide-react";
